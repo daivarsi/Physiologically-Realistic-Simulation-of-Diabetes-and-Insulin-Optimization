@@ -1,69 +1,60 @@
 # Physiologically Realistic Simulation of Diabetes and Insulin Optimization
 
-This project models the physiological behavior of a person with diabetes over a 24-hour period using a hybrid of deterministic modeling and behavioral rules. It simulates glucose-insulin dynamics, meal absorption, insulin decay, liver glucose output, and real-time insulin dosing via numerical optimization.
+This project models a 24-hour simulation of a diabetic individual's glucose and insulin dynamics. It integrates meal absorption, liver glucose production, and real-time insulin dosing optimization to realistically capture daily physiological behavior.
 
-### What This Project Does
+## What This Project Does
 
-- **Simulates diabetic glucose regulation** using a simplified physiology-based ODE model
-- **Generates realistic meal events** using nutritional data clustered into healthy, balanced, and cheat meals
-- **Models glucose absorption** over time based on glycemic load and digestion window
-- **Implements insulin optimization** using `scipy.optimize.minimize` to determine the ideal dose per timestep
-- **Tracks daily physiological metrics**: glucose, insulin, dose amounts, and meal timing
-- **Visualizes** glucose and insulin curves with meal event annotations
+- Simulates diabetic glucose-insulin regulation using a simplified physiological model
+- Generates meals from a real nutrition dataset and categorizes them as healthy, balanced, or cheat
+- Models glucose absorption based on glycemic load over time
+- Triggers insulin only when glucose exceeds a threshold, and optimizes the dose using numerical minimization
+- Logs glucose, insulin, dose amounts, and meal events
+- Plots physiological signals and annotates meal timing
 
-### Key Features
+## Dataset Used
 
-- Adaptive meal scaling based on daily calorie and protein targets
-- Meal filtering logic to reject non-meal items and control portion sizes
-- Liver glucose production kicks in below 100 mg/dL to maintain homeostasis
-- Dynamic insulin correction only when glucose exceeds thresholds
-- Stability-aware dose optimization to avoid sharp glucose swings
+This simulation uses the following dataset for meal composition:
 
----
+**Food Nutrition Dataset by Utsav Dey**  
+https://www.kaggle.com/datasets/utsavdey1410/food-nutrition-dataset
 
-### Example Output
+The dataset includes detailed nutritional information and is used to construct realistic synthetic meals. It is automatically downloaded using `kagglehub`.
+
+> Note: A second dataset (`diabetes_merged_date-time-sorted.csv`) containing real diabetes logs has been uploaded but is not yet integrated into the simulation.
+
+## Example Output
 
 The simulation produces a plot showing:
 
-- Glucose fluctuations throughout the day
-- Insulin responses triggered by optimizer
-- Timing and identity of meals
-- Insight into how the body would respond in a diabetic condition
+- Glucose levels over time
+- Insulin doses computed by the optimizer
+- Meal events and annotations
 
----
+## Future Work
 
-### Plans for Next Steps
+Planned improvements include:
 
-1. **Integrate Real Patient Data**  
-   Use the `diabetes_merged_date-time-sorted.csv` dataset (from the OhioT1DM repository) to:
-   - Drive meal and insulin events from real logs
-   - Compare simulated glucose with actual glucose measurements
-   - Tune model parameters to better fit patient profiles
+1. **Integrating Real Patient Data**  
+   Use logged insulin and glucose values from a real diabetic dataset to drive the simulation and validate predictions.
 
-2. **Add Pharmacokinetics**  
-   Simulate delayed insulin absorption (e.g. fast-acting vs basal insulin) using more realistic curves.
+2. **Modeling Insulin Pharmacokinetics**  
+   Simulate delayed absorption for different types of insulin (e.g., basal vs bolus).
 
-3. **Build Meal-Dose Matching System**  
-   Develop logic for predicting required insulin dose based on meal contents (e.g. carbs, glycemic index).
+3. **Meal-to-Dose Matching**  
+   Build a smarter system for predicting ideal insulin dose based on meal contents.
 
-4. **Optimize Long-Term Outcomes**  
-   Extend the simulation across multiple days and add long-term metrics (A1c estimate, insulin burden).
+4. **Multi-Day Simulation**  
+   Extend to 48–72 hour simulation and analyze cumulative trends (e.g., A1c, insulin load).
 
-5. **Deploy as Interactive Tool**  
-   Turn the simulation into a web app or Colab interface for educational or research use.
+5. **Interactive Deployment**  
+   Build a Colab or web interface for exploration and teaching purposes.
 
----
-
-### Requirements
+## Requirements
 
 - Python 3.7+
-- `numpy`, `scipy`, `matplotlib`, `pandas`, `sklearn`
-- `kagglehub` (for auto-downloading the food dataset)
+- `numpy`, `matplotlib`, `scipy`, `pandas`, `scikit-learn`, `kagglehub`
 
----
+## Author
 
-### Credits
-
-Food composition data via: `utsavdey1410/food-nutrition-dataset` on Kaggle  
-Simulation and modeling code by: *[Your Name]*
+*Your Name Here*
 
