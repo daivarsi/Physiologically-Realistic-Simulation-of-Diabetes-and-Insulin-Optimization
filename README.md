@@ -56,5 +56,4 @@ Planned improvements include:
 
 ## Author
 
-*Your Name Here*
-
+Daivarsi
